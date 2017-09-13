@@ -51,10 +51,8 @@ http {
     server_tokens off;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
-    pagespeed FileCachePath /var/ngx_pagespeed_cache;
-
     include proxy.conf;
-    include fcgi.conf;
+    include fastcgi.conf;
 
     include conf.d/*.conf;
     include /etc/nginx/nginx.custom.d/*.conf;
@@ -233,34 +231,34 @@ TEMPLATE_LOCATION_CONTENT_PROXY = """
 """
 
 TEMPLATE_LOCATION_CONTENT_FCGI = """
-        include fcgi.conf;
+        include fastcgi.conf;
         fastcgi_pass %(url)s;
 """
 
 TEMPLATE_LOCATION_CONTENT_PHP_FCGI = """
         fastcgi_index index.php;
-        include fcgi.conf;
+        include fastcgi.conf;
         fastcgi_pass %(listen)s;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 """
 
 TEMPLATE_LOCATION_CONTENT_PHP56_FCGI = """
         fastcgi_index index.php;
-        include fcgi.conf;
+        include fastcgi.conf;
         fastcgi_pass %(listen)s;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 """
 
 TEMPLATE_LOCATION_CONTENT_PHP70_FCGI = """
         fastcgi_index index.php;
-        include fcgi.conf;
+        include fastcgi.conf;
         fastcgi_pass %(listen)s;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 """
 
 TEMPLATE_LOCATION_CONTENT_PHP71_FCGI = """
         fastcgi_index index.php;
-        include fcgi.conf;
+        include fastcgi.conf;
         fastcgi_pass %(listen)s;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 """
